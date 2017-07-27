@@ -1,5 +1,7 @@
 package com.freshjesh.answerme.Threads;
 
+import android.util.Log;
+
 import com.freshjesh.answerme.Fragments.PlayerlistFragment;
 import com.freshjesh.answerme.Model.Game;
 
@@ -33,6 +35,7 @@ public class ServerSenderThread extends Thread {
             objectOutputStream.writeObject(message);
             if (message instanceof Game) {
                 PlayerlistFragment.gameObject = (Game) message;
+                Log.d("ServerSenderThread", "reset gameObject");
             }
         } catch (IOException e) {
             e.printStackTrace();

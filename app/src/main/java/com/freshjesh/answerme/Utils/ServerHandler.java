@@ -3,6 +3,7 @@ package com.freshjesh.answerme.Utils;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.util.Log;
 
 import com.freshjesh.answerme.Fragments.GameFragment;
 import com.freshjesh.answerme.Fragments.PlayerlistFragment;
@@ -33,14 +34,14 @@ public class ServerHandler extends Handler {
         if (gameObject instanceof Game) {
             if (GameFragment.gameObject != null) {
                 GameFragment.gameObject = (Game) gameObject;
+                GameFragment.updateGrid();
+                Log.d("ServerHandler", "updateGrid");
 //                GameFragment.updatePlayerStatus();
                 sendToAll(gameObject);
             } else {
                 PlayerlistFragment.gameObject = (Game) gameObject;
             }
         }
-
-
     }
 
     public static void sendToAll(Object gameObject) {

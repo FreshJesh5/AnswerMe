@@ -4,7 +4,8 @@ import android.os.Bundle;
 import android.os.Message;
 import android.util.Log;
 
-import com.freshjesh.answerme.Fragments.MainFragment;
+import com.freshjesh.answerme.Fragments.ClientFragment;
+//import com.freshjesh.answerme.Fragments.MainFragment;
 import com.freshjesh.answerme.Model.Game;
 import com.freshjesh.answerme.Utils.Constants;
 
@@ -45,7 +46,7 @@ public class ClientListenerThread extends Thread {
                     }
                     Message msg = new Message();
                     msg.setData(data);
-                    MainFragment.clientHandler.sendMessage(msg);
+                    ClientFragment.clientHandler.sendMessage(msg);
                 }
             }
         } catch (IOException e) {

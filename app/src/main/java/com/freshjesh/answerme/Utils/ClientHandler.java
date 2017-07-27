@@ -3,6 +3,7 @@ package com.freshjesh.answerme.Utils;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.util.Log;
 
 
 import com.freshjesh.answerme.Fragments.ClientFragment;
@@ -40,11 +41,13 @@ public class ClientHandler extends Handler {
 //not my gray                    ((Game) clientObject).senderUsername = "";
                 }
                 GameFragment.gameObject = (Game) clientObject;
+                GameFragment.updateGrid();
+                Log.d("ClientHandler", "updateGrid");
 //                GameFragment.updatePlayerStatus();
 //                GameFragment.updateTable();
 //                GameFragment.updateHand();
             } else {
-                ClientFragment.gameobject = (Game) clientObject;
+                ClientFragment.gameObject = (Game) clientObject;
             }
         }
     }

@@ -87,6 +87,7 @@ public class PlayerlistFragment extends Fragment{
                 }
             }
         });
+
         mPlayerList = (RecyclerView) rootView.findViewById(R.id.gameList);
 
 

@@ -13,7 +13,7 @@ import android.widget.Toast;
 
 import com.freshjesh.answerme.R;
 import com.freshjesh.answerme.Threads.ClientConnectionThread;
-import com.freshjesh.answerme.Utils.ClientHandler;
+//import com.freshjesh.answerme.Utils.ClientHandler;
 import com.rengwuxian.materialedittext.MaterialEditText;
 
 import java.lang.reflect.InvocationTargetException;
@@ -24,7 +24,7 @@ import java.lang.reflect.Method;
  */
 
 public class MainFragment extends Fragment {
-    public static ClientHandler clientHandler;
+//    public static ClientHandler clientHandler;
     public static MaterialEditText userName;
 
     public MainFragment() {
@@ -74,9 +74,9 @@ public class MainFragment extends Fragment {
                             }
                         });
                     } else {
-                        if (clientHandler == null) {
-                            clientHandler = new ClientHandler();
-                        }
+//                        if (clientHandler == null) {
+//                            clientHandler = new ClientHandler();
+//                        }
                         hostGame.setVisibility(View.GONE);
                         joinGame.setOnClickListener(new View.OnClickListener() {
                             @Override

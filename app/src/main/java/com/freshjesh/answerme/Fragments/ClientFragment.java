@@ -5,6 +5,7 @@ package com.freshjesh.answerme.Fragments;
  */
 
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.view.LayoutInflater;
@@ -17,11 +18,13 @@ import android.widget.Toast;
 import com.freshjesh.answerme.Model.Game;
 import com.freshjesh.answerme.R;
 import com.freshjesh.answerme.Threads.ClientConnectionThread;
+import com.freshjesh.answerme.Utils.ClientHandler;
 
 public class ClientFragment extends Fragment {
     public static TextView gameName;
     public static TextView userName;
-    public static Game gameobject;
+    public static Game gameObject;
+    public static ClientHandler clientHandler;
 
     public ClientFragment() {
     }
@@ -29,6 +32,7 @@ public class ClientFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        clientHandler = new ClientHandler();
     }
 
     @Override
@@ -45,9 +49,9 @@ public class ClientFragment extends Fragment {
         joinGame.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (gameobject != null) {
+                if (gameObject != null) {
                     GameFragment gameFragment = new GameFragment();
-                    gameFragment.setParameters(gameobject, ClientConnectionThread.socket);
+                    gameFragment.setParameters(gameObject, ClientConnectionThread.socket);
                     fragmentManager.beginTransaction()
                             .replace(R.id.container, gameFragment).addToBackStack(GameFragment.class.getName())
                             .commit();
