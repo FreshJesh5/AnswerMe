@@ -4,6 +4,7 @@ package com.freshjesh.answerme.Fragments;
  * Created by joshc on 7/24/2017.
  */
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.app.Fragment;
@@ -15,10 +16,14 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.freshjesh.answerme.Activities.GameActivity;
 import com.freshjesh.answerme.Model.Game;
 import com.freshjesh.answerme.R;
 import com.freshjesh.answerme.Threads.ClientConnectionThread;
 import com.freshjesh.answerme.Utils.ClientHandler;
+import com.freshjesh.answerme.Utils.Constants;
+
+import java.net.Socket;
 
 public class ClientFragment extends Fragment {
     public static TextView gameName;
@@ -50,11 +55,15 @@ public class ClientFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 if (gameObject != null) {
-                    GameFragment gameFragment = new GameFragment();
-                    gameFragment.setParameters(gameObject, ClientConnectionThread.socket);
-                    fragmentManager.beginTransaction()
-                            .replace(R.id.container, gameFragment).addToBackStack(GameFragment.class.getName())
-                            .commit();
+                    Intent activityIntent = new Intent(getActivity(), GameActivity.class);
+                    activityIntent.putExtra(Constants.MESSAGE_KEY, gameObject);
+                    startActivity(activityIntent);
+
+//                    GameFragment gameFragment = new GameFragment();
+//                    gameFragment.setParameters(gameObject, ClientConnectionThread.socket);
+//                    fragmentManager.beginTransaction()
+//                            .replace(R.id.container, gameFragment).addToBackStack(GameFragment.class.getName())
+//                            .commit();
                 } else {
                     Toast.makeText(getActivity(), "Game setup not complete. Please try again", Toast.LENGTH_SHORT).show();
                 }

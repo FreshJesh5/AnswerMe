@@ -1,46 +1,44 @@
-package com.freshjesh.answerme.Fragments;
+package com.freshjesh.answerme.Activities;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.Button;
 
+import com.freshjesh.answerme.Fragments.MainFragment;
 import com.freshjesh.answerme.Model.Game;
 import com.freshjesh.answerme.R;
 import com.freshjesh.answerme.Threads.ClientConnectionThread;
 import com.freshjesh.answerme.Utils.ClientHandler;
 import com.freshjesh.answerme.Utils.Constants;
 import com.freshjesh.answerme.Utils.ServerHandler;
+import com.freshjesh.answerme.Utils.SocketHandler;
 
 import java.net.Socket;
 
 /**
- * Created by joshc on 7/25/2017.
+ * Created by joshc on 7/27/2017.
  */
 
-public class GameFragment extends Fragment {
+public class GameActivity extends AppCompatActivity {
 
-    public static View rootView;
-    public static Game gameObject;
-    public static Socket socket;
-    public static Button[] myLayoutGrid = new Button[9];
-
-    public GameFragment() {
-
-    }
+    private static Game gameObject;
+    private Socket socket;
+    private static Button[] myLayoutGrid = new Button[9];
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-    }
+        setContentView(R.layout.main_game_layout);
 
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        rootView = inflater.inflate(R.layout.main_game_layout, container, false);
+        Intent intent = getIntent();
+        gameObject = (Game)intent.getSerializableExtra(Constants.MESSAGE_KEY);
+        socket = SocketHandler.getSocket();
+
+
 
         int[] ids={R.id.btn1, R.id.btn2, R.id.btn3,
                 R.id.btn4, R.id.btn5, R.id.btn6,
@@ -48,7 +46,7 @@ public class GameFragment extends Fragment {
 
         for (int i = 0 ; i < myLayoutGrid.length ; i++)
         {
-            myLayoutGrid[i] = (Button) rootView.findViewById(ids[i]);
+            myLayoutGrid[i] = (Button) findViewById(ids[i]);
             myLayoutGrid[i].setBackgroundColor(Color.BLUE);
             myLayoutGrid[i].setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -71,21 +69,21 @@ public class GameFragment extends Fragment {
                 }
             });
         }
-
-        return rootView;
     }
 
-    public void setParameters(Game gameObject, Socket socket) {
-        this.gameObject = gameObject;
-        this.socket = socket;
+    public static Game getGameObject(){
+        return gameObject;
     }
 
-    public static void updateButton(boolean bool, Button button) {
+    public static void setGameObject(Game gameObject){
+        GameActivity.gameObject = gameObject;
+    }
+
+    public void updateButton(boolean bool, Button button) {
         if(bool){
             button.setBackgroundColor(Color.RED);
         }
         else {button.setBackgroundColor(Color.BLUE);}
-        Log.d("GameFragment", "updateButton");
     }
 
     public static void updateGrid (){
@@ -95,10 +93,9 @@ public class GameFragment extends Fragment {
             }
             else {myLayoutGrid[i].setBackgroundColor(Color.BLUE);}
         }
-        Log.d("GameFragment", "updateGrid");
     }
 
-    public static void updateGameForAll() {
+    public void updateGameForAll() {
         if (ClientConnectionThread.serverStarted) {
             ClientHandler.sendToServer(gameObject);
         } else {
@@ -106,6 +103,6 @@ public class GameFragment extends Fragment {
                 ServerHandler.sendToAll(gameObject);
             }
         }
-        Log.d("GameFragment", "updateGameForAll");
     }
+
 }

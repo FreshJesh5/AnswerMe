@@ -1,5 +1,6 @@
 package com.freshjesh.answerme.Fragments;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -12,6 +13,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.Toast;
 
+import com.freshjesh.answerme.Activities.GameActivity;
 import com.freshjesh.answerme.Adapters.PlayerAdapter;
 import com.freshjesh.answerme.R;
 import com.freshjesh.answerme.Model.Game;
@@ -74,11 +76,15 @@ public class PlayerlistFragment extends Fragment{
                 if (ServerConnectionThread.allPlayersJoined) {
                     try {
                         initializeGame();
-                        GameFragment gameFragment = new GameFragment();
-                        gameFragment.setParameters(gameObject, null);
-                        fragmentManager.beginTransaction()
-                                .replace(R.id.container, gameFragment).addToBackStack(GameFragment.class.getName())
-                                .commit();
+                        Intent activityIntent = new Intent(getActivity(), GameActivity.class);
+                        activityIntent.putExtra(Constants.MESSAGE_KEY, gameObject);
+                        startActivity(activityIntent);
+
+//                        GameFragment gameFragment = new GameFragment();
+//                        gameFragment.setParameters(gameObject, null);
+//                        fragmentManager.beginTransaction()
+//                                .replace(R.id.container, gameFragment).addToBackStack(GameFragment.class.getName())
+//                                .commit();
                     } catch (IllegalArgumentException exception) {
                         Toast.makeText(getActivity(), exception.getMessage(), Toast.LENGTH_SHORT).show();
                     }

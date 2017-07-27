@@ -5,7 +5,8 @@ import android.os.Handler;
 import android.os.Message;
 import android.util.Log;
 
-import com.freshjesh.answerme.Fragments.GameFragment;
+import com.freshjesh.answerme.Activities.GameActivity;
+
 import com.freshjesh.answerme.Fragments.PlayerlistFragment;
 import com.freshjesh.answerme.Model.Game;
 import com.freshjesh.answerme.Model.PlayerInfo;
@@ -32,9 +33,9 @@ public class ServerHandler extends Handler {
             PlayerlistFragment.mAdapter.notifyItemInserted(PlayerlistFragment.deviceList.size() - 1);
         }
         if (gameObject instanceof Game) {
-            if (GameFragment.gameObject != null) {
-                GameFragment.gameObject = (Game) gameObject;
-                GameFragment.updateGrid();
+            if (GameActivity.getGameObject() != null) {
+                GameActivity.setGameObject((Game) gameObject);
+                GameActivity.updateGrid();
                 Log.d("ServerHandler", "updateGrid");
 //                GameFragment.updatePlayerStatus();
                 sendToAll(gameObject);
@@ -45,11 +46,11 @@ public class ServerHandler extends Handler {
     }
 
     public static void sendToAll(Object gameObject) {
-        Iterator<Socket> socketIterator = ServerConnectionThread.socketUserMap.keySet().iterator();
+        Iterator<Socket> socketIterator = SocketHandler.getSocketMap().keySet().iterator();
         Socket socket;
         while (socketIterator.hasNext()) {
             socket = socketIterator.next();
-            if (!ServerConnectionThread.socketUserMap.get(socket).equals(((Game) gameObject).senderUsername)) {
+            if (!SocketHandler.getSocketMap().get(socket).equals(((Game) gameObject).senderUsername)) {
                 ServerSenderThread sendGameName = new ServerSenderThread(socket, gameObject);
                 sendGameName.start();
             }

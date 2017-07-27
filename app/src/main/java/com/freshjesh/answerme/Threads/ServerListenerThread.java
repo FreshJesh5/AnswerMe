@@ -7,6 +7,7 @@ import com.freshjesh.answerme.Fragments.HostFragment;
 import com.freshjesh.answerme.Model.Game;
 import com.freshjesh.answerme.Model.PlayerInfo;
 import com.freshjesh.answerme.Utils.Constants;
+import com.freshjesh.answerme.Utils.SocketHandler;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -40,7 +41,7 @@ public class ServerListenerThread extends Thread {
                     if (gameObject instanceof PlayerInfo) {
                         data.putSerializable(Constants.DATA_KEY, (PlayerInfo) gameObject);
                         data.putInt(Constants.ACTION_KEY, Constants.PLAYER_LIST_UPDATE);
-                        ServerConnectionThread.socketUserMap.put(hostThreadSocket, ((PlayerInfo) gameObject).username);
+                        SocketHandler.setSocketMap(hostThreadSocket, ((PlayerInfo) gameObject).username);
                     } else {
                         data.putSerializable(Constants.DATA_KEY, (Game) gameObject);
                     }

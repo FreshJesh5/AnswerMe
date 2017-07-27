@@ -1,6 +1,7 @@
 package com.freshjesh.answerme.Threads;
 
 import com.freshjesh.answerme.Model.PlayerInfo;
+import com.freshjesh.answerme.Utils.SocketHandler;
 import com.freshjesh.answerme.Utils.WifiHelper;
 
 import java.io.IOException;
@@ -14,7 +15,6 @@ import java.util.ArrayList;
 
 public class ClientConnectionThread extends Thread {
 
-    public static Socket socket;
     String dstAddress;
     int dstPort = 8080;
     public static boolean serverStarted = false;
@@ -26,19 +26,19 @@ public class ClientConnectionThread extends Thread {
 
     @Override
     public void run() {
-        if (socket == null) {
+        if (SocketHandler.getSocket() == null) {
             try {
                 ArrayList<String> deviceList = WifiHelper.getDeviceList();
                 if (deviceList.size() > 0) {
                     dstAddress = deviceList.get(0);
                     if (dstAddress != null) {
-                        socket = new Socket(dstAddress, dstPort);
-                        if (socket.isConnected()) {
+                        SocketHandler.setSocket(new Socket(dstAddress, dstPort));
+                        if (SocketHandler.getSocket().isConnected()) {
                             serverStarted = true;
-                            ClientListenerThread clientListener = new ClientListenerThread(socket);
+                            ClientListenerThread clientListener = new ClientListenerThread(SocketHandler.getSocket());
                             clientListener.start();
                             PlayerInfo playerInfo = new PlayerInfo(userName);
-                            ClientSenderThread sendUserName = new ClientSenderThread(socket, playerInfo);
+                            ClientSenderThread sendUserName = new ClientSenderThread(SocketHandler.getSocket(), playerInfo);
                             sendUserName.start();
                         }
                     }
