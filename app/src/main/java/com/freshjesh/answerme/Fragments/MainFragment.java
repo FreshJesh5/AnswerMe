@@ -40,9 +40,9 @@ public class MainFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.start_screen, container, false);
-        Button hostGame = (Button) rootView.findViewById(R.id.hostGame);
-        Button joinGame = (Button) rootView.findViewById(R.id.joinGame);
-        Button settingsButton = (Button) rootView.findViewById(R.id.settingsButton);
+        Button hostGame = rootView.findViewById(R.id.hostGame);
+        Button joinGame = rootView.findViewById(R.id.joinGame);
+        Button settingsButton = rootView.findViewById(R.id.settingsButton);
 //        infoButton.setOnClickListener(new View.OnClickListener() {
 //            @Override
 //            public void onClick(View view) {
@@ -53,7 +53,7 @@ public class MainFragment extends Fragment {
 //        });
         WifiManager wifi = (WifiManager) getActivity().getApplicationContext().getSystemService(Context.WIFI_SERVICE);
         Method[] wmMethods = wifi.getClass().getDeclaredMethods();
-        userName = (MaterialEditText) rootView.findViewById(R.id.userName);
+        userName = rootView.findViewById(R.id.userName);
         for (Method method : wmMethods) {
             if (method.getName().equals("isWifiApEnabled")) {
                 try {
@@ -81,16 +81,10 @@ public class MainFragment extends Fragment {
                         joinGame.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View view) {
-                                ClientConnectionThread clientConnect = new ClientConnectionThread(MainFragment.userName.getText().toString());
-                                clientConnect.start();
                                 if (userName.getText() != null && userName.getText().toString().trim().length() > 0) {
-//                                    if (ClientConnectionThread.serverStarted) {
                                     fragmentManager.beginTransaction()
                                             .replace(R.id.container, new ClientFragment()).addToBackStack(ClientFragment.class.getName())
                                             .commit();
-//                                    } else {
-//                                        Toast.makeText(getActivity(), "Game yet to be hosted", Toast.LENGTH_SHORT).show();
-//                                    }
                                 } else {
                                     Toast.makeText(getActivity(), "Please enter a UserName", Toast.LENGTH_SHORT).show();
                                 }

@@ -36,9 +36,9 @@ public class HostFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.server_host_game, container, false);
-        Button startGame = (Button) rootView.findViewById(R.id.startGame);
-        gameName = (MaterialEditText) rootView.findViewById(R.id.gameName);
-        numberOfPlayers = (MaterialEditText) rootView.findViewById(R.id.numberOfPlayers);
+        Button startGame = rootView.findViewById(R.id.startGame);
+        gameName = rootView.findViewById(R.id.gameName);
+        numberOfPlayers = rootView.findViewById(R.id.numberOfPlayers);
         final FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
         startGame.setOnClickListener(new View.OnClickListener() {
             @Override

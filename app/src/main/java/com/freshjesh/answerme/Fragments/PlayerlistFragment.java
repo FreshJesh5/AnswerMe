@@ -3,7 +3,6 @@ package com.freshjesh.answerme.Fragments;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -33,7 +32,7 @@ public class PlayerlistFragment extends Fragment{
     private static final String KEY_LAYOUT_MANAGER = "layoutManager";
     private static final int SPAN_COUNT = 2;
     public static Game gameObject;
-    public static ArrayList<String> deviceList = new ArrayList();
+    public static ArrayList<String> deviceList = new ArrayList<>();
 
     private enum LayoutManagerType {
         GRID_LAYOUT_MANAGER,
@@ -56,19 +55,8 @@ public class PlayerlistFragment extends Fragment{
                              Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.player_join_list, container, false);
         rootView.setTag(TAG);
-        Button gameSettings = (Button) rootView.findViewById(R.id.gameSettings);
-        Button playGame = (Button) rootView.findViewById(R.id.playGame);
-
-        final FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
-
-//        gameSettings.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                fragmentManager.beginTransaction()
-//                        .replace(R.id.container, new SettingsFragment()).addToBackStack(SettingsFragment.class.getName())
-//                        .commit();
-//            }
-//        });
+        Button gameSettings = rootView.findViewById(R.id.gameSettings);
+        Button playGame = rootView.findViewById(R.id.playGame);
 
         playGame.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -79,12 +67,6 @@ public class PlayerlistFragment extends Fragment{
                         Intent activityIntent = new Intent(getActivity(), GameActivity.class);
                         activityIntent.putExtra(Constants.MESSAGE_KEY, gameObject);
                         startActivity(activityIntent);
-
-//                        GameFragment gameFragment = new GameFragment();
-//                        gameFragment.setParameters(gameObject, null);
-//                        fragmentManager.beginTransaction()
-//                                .replace(R.id.container, gameFragment).addToBackStack(GameFragment.class.getName())
-//                                .commit();
                     } catch (IllegalArgumentException exception) {
                         Toast.makeText(getActivity(), exception.getMessage(), Toast.LENGTH_SHORT).show();
                     }
@@ -94,7 +76,7 @@ public class PlayerlistFragment extends Fragment{
             }
         });
 
-        mPlayerList = (RecyclerView) rootView.findViewById(R.id.gameList);
+        mPlayerList = rootView.findViewById(R.id.gameList);
 
 
         mLayoutManager = new LinearLayoutManager(getActivity());

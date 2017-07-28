@@ -24,28 +24,23 @@ public class ClientHandler extends Handler {
     public void handleMessage(Message msg) {
         super.handleMessage(msg);
         messageData = msg.getData();
-        int value = messageData.getInt(Constants.ACTION_KEY);
+//        int value = messageData.getInt(Constants.ACTION_KEY);
         Object clientObject = messageData.getSerializable(Constants.DATA_KEY);
-        if (value == Constants.UPDATE_GAME_NAME) {
+        if (clientObject instanceof String) {
             String gameName = (String) clientObject;
-            if (ClientFragment.gameName != null)
-            {
-                ClientFragment.gameName.setText(gameName);
-            }
+            ClientFragment.gameName.setText(gameName);
+            Log.d("ClientHandler", "gameNameString set");
         }
 
         if (clientObject instanceof Game) {
             if (GameActivity.getGameObject() != null) {
-                if (((Game) clientObject).senderUsername.equals(String.valueOf(Constants.NEW_GAME))) {
-                    ClientSenderThread.isActive = true;
-//not my gray                    ((Game) clientObject).senderUsername = "";
-                }
+//                if (((Game) clientObject).senderUsername.equals(String.valueOf(Constants.NEW_GAME))) {
+//                    ClientSenderThread.isActive = true;
+////not my gray                    ((Game) clientObject).senderUsername = "";
+//                }
                 GameActivity.setGameObject((Game) clientObject);
                 GameActivity.updateGrid();
                 Log.d("ClientHandler", "updateGrid");
-//                GameFragment.updatePlayerStatus();
-//                GameFragment.updateTable();
-//                GameFragment.updateHand();
             } else {
                 ClientFragment.gameObject = (Game) clientObject;
             }

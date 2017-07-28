@@ -10,7 +10,6 @@ import com.freshjesh.answerme.Activities.GameActivity;
 import com.freshjesh.answerme.Fragments.PlayerlistFragment;
 import com.freshjesh.answerme.Model.Game;
 import com.freshjesh.answerme.Model.PlayerInfo;
-import com.freshjesh.answerme.Threads.ServerConnectionThread;
 import com.freshjesh.answerme.Threads.ServerSenderThread;
 
 import java.net.Socket;
@@ -37,7 +36,6 @@ public class ServerHandler extends Handler {
                 GameActivity.setGameObject((Game) gameObject);
                 GameActivity.updateGrid();
                 Log.d("ServerHandler", "updateGrid");
-//                GameFragment.updatePlayerStatus();
                 sendToAll(gameObject);
             } else {
                 PlayerlistFragment.gameObject = (Game) gameObject;
@@ -50,10 +48,10 @@ public class ServerHandler extends Handler {
         Socket socket;
         while (socketIterator.hasNext()) {
             socket = socketIterator.next();
-            if (!SocketHandler.getSocketMap().get(socket).equals(((Game) gameObject).senderUsername)) {
-                ServerSenderThread sendGameName = new ServerSenderThread(socket, gameObject);
-                sendGameName.start();
-            }
+//            if (!SocketHandler.getSocketMap().get(socket).equals(((Game) gameObject).senderUsername)) {
+                ServerSenderThread sendGameUpdate = new ServerSenderThread(socket, gameObject);
+                sendGameUpdate.start();
+//            }
             try {
                 Thread.sleep(100);
             } catch (InterruptedException e) {
