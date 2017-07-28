@@ -5,7 +5,7 @@ import android.os.Message;
 
 import com.freshjesh.answerme.Fragments.HostFragment;
 import com.freshjesh.answerme.Model.Game;
-import com.freshjesh.answerme.Model.PlayerInfo;
+import com.freshjesh.answerme.Model.Player;
 import com.freshjesh.answerme.Utils.Constants;
 import com.freshjesh.answerme.Utils.SocketHandler;
 
@@ -38,10 +38,10 @@ public class ServerListenerThread extends Thread {
                 Bundle data = new Bundle();
                 gameObject = objectInputStream.readObject();
                 if (gameObject != null) {
-                    if (gameObject instanceof PlayerInfo) {
-                        data.putSerializable(Constants.DATA_KEY, (PlayerInfo) gameObject);
-                        data.putInt(Constants.ACTION_KEY, Constants.PLAYER_LIST_UPDATE);
-                        SocketHandler.setSocketMap(hostThreadSocket, ((PlayerInfo) gameObject).username);
+                    if (gameObject instanceof Player) {
+                        data.putSerializable(Constants.DATA_KEY, (Player) gameObject);
+//                        data.putInt(Constants.ACTION_KEY, Constants.PLAYER_LIST_UPDATE);
+                        SocketHandler.setSocketMap(hostThreadSocket, ((Player) gameObject).username);
                     } else {
                         data.putSerializable(Constants.DATA_KEY, (Game) gameObject);
                     }

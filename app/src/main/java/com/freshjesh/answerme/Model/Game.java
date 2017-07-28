@@ -17,19 +17,19 @@ public class Game implements Serializable {
     private boolean[] myGameGrid = new boolean[9];
 
 
-    public Game(ArrayList<String> usernames, String gameName) {
-        this.senderUsername = null;
-        this.players = new ArrayList();
-        this.numberOfPlayer = usernames.size();
+    public Game(ArrayList<Player> players, String gameName) {
+//        this.senderUsername = null;
+        this.players = players;
+        this.numberOfPlayer = players.size();
         this.gameName = gameName;
-        if (usernames.size() > 6) {
+        if (players.size() > 6) {
 //            usernames.remove(usernames.size() - 1);
             throw new IllegalArgumentException("Number of players above the allowed limit (6)");
         }
 
-        for (int i = 0; i < numberOfPlayer; i++) {
-            players.add(new Player(i + 1, usernames.get(i), true));
-        }
+//        for (int i = 0; i < numberOfPlayer; i++) {
+//            players.add(new Player(i + 1, players.get(i), true));
+//        }
 //        usernames.remove(usernames.size() - 1);
     }
 

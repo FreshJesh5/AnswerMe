@@ -9,7 +9,7 @@ import com.freshjesh.answerme.Activities.GameActivity;
 
 import com.freshjesh.answerme.Fragments.PlayerlistFragment;
 import com.freshjesh.answerme.Model.Game;
-import com.freshjesh.answerme.Model.PlayerInfo;
+import com.freshjesh.answerme.Model.Player;
 import com.freshjesh.answerme.Threads.ServerSenderThread;
 
 import java.net.Socket;
@@ -26,9 +26,9 @@ public class ServerHandler extends Handler {
         Bundle messageData = msg.getData();
         Object gameObject = messageData.getSerializable(Constants.DATA_KEY);
 
-        if (gameObject instanceof PlayerInfo) {
-            PlayerInfo playerInfo = (PlayerInfo) gameObject;
-            PlayerlistFragment.deviceList.add(playerInfo.username);
+        if (gameObject instanceof Player) {
+            Player player = (Player) gameObject;
+            PlayerlistFragment.deviceList.add(player);
             PlayerlistFragment.mAdapter.notifyItemInserted(PlayerlistFragment.deviceList.size() - 1);
         }
         if (gameObject instanceof Game) {

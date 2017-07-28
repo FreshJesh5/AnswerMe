@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.freshjesh.answerme.Model.Player;
 import com.freshjesh.answerme.R;
 
 import java.util.ArrayList;
@@ -16,7 +17,7 @@ import java.util.ArrayList;
 
 public class PlayerAdapter extends RecyclerView.Adapter<PlayerAdapter.ViewHolder> {
 
-    private ArrayList<String> mDataSet;
+    private ArrayList<Player> mDataSet;
 
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
@@ -37,7 +38,7 @@ public class PlayerAdapter extends RecyclerView.Adapter<PlayerAdapter.ViewHolder
         }
     }
 
-    public PlayerAdapter(ArrayList<String> dataSet) {
+    public PlayerAdapter(ArrayList<Player> dataSet) {
         mDataSet = dataSet;
     }
 
@@ -51,7 +52,7 @@ public class PlayerAdapter extends RecyclerView.Adapter<PlayerAdapter.ViewHolder
 
     @Override
     public void onBindViewHolder(ViewHolder viewHolder, final int position) {
-        viewHolder.getTextView().setText(mDataSet.get(position));
+        viewHolder.getTextView().setText(mDataSet.get(position).username);
     }
 
     @Override

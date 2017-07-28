@@ -1,6 +1,6 @@
 package com.freshjesh.answerme.Threads;
 
-import com.freshjesh.answerme.Model.PlayerInfo;
+import com.freshjesh.answerme.Model.Player;
 import com.freshjesh.answerme.Utils.SocketHandler;
 import com.freshjesh.answerme.Utils.WifiHelper;
 
@@ -37,8 +37,8 @@ public class ClientConnectionThread extends Thread {
                             serverStarted = true;
                             ClientListenerThread clientListener = new ClientListenerThread(SocketHandler.getSocket());
                             clientListener.start();
-                            PlayerInfo playerInfo = new PlayerInfo(userName);
-                            ClientSenderThread sendUserName = new ClientSenderThread(SocketHandler.getSocket(), playerInfo);
+                            Player player = new Player(userName);
+                            ClientSenderThread sendUserName = new ClientSenderThread(SocketHandler.getSocket(), player);
                             sendUserName.start();
                         }
                     }

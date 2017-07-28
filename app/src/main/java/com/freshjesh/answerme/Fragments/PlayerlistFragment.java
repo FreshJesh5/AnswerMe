@@ -14,6 +14,7 @@ import android.widget.Toast;
 
 import com.freshjesh.answerme.Activities.GameActivity;
 import com.freshjesh.answerme.Adapters.PlayerAdapter;
+import com.freshjesh.answerme.Model.Player;
 import com.freshjesh.answerme.R;
 import com.freshjesh.answerme.Model.Game;
 import com.freshjesh.answerme.Threads.ServerConnectionThread;
@@ -32,7 +33,8 @@ public class PlayerlistFragment extends Fragment{
     private static final String KEY_LAYOUT_MANAGER = "layoutManager";
     private static final int SPAN_COUNT = 2;
     public static Game gameObject;
-    public static ArrayList<String> deviceList = new ArrayList<>();
+    public static ArrayList<Player> deviceList = new ArrayList<>();
+    private Player myPlayer = new Player(MainFragment.userName.getText().toString());
 
     private enum LayoutManagerType {
         GRID_LAYOUT_MANAGER,
@@ -127,7 +129,7 @@ public class PlayerlistFragment extends Fragment{
     }
 
     public void initializeGame() {
-        deviceList.add(MainFragment.userName.getText().toString());
+        deviceList.add(myPlayer);
 
         gameObject = new Game(deviceList, HostFragment.gameName.getText().toString());
 //
