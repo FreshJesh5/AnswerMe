@@ -49,6 +49,9 @@ public class ServerListenerThread extends Thread {
                         ServerConnectionThread.socketUserMap.put(hostThreadSocket, ((PlayerInfo) gameObject).username);
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+>>>>>>> parent of 88bcace... working app, 2nd version with Game Activity
+=======
 >>>>>>> parent of 88bcace... working app, 2nd version with Game Activity
 =======
 >>>>>>> parent of 88bcace... working app, 2nd version with Game Activity

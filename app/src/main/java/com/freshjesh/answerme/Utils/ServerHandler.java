@@ -57,6 +57,7 @@ public class ServerHandler extends Handler {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 //            if (!SocketHandler.getSocketMap().get(socket).equals(((Game) gameObject).senderUsername)) {
                 ServerSenderThread sendGameUpdate = new ServerSenderThread(socket, gameObject);
                 sendGameUpdate.start();
@@ -69,6 +70,9 @@ public class ServerHandler extends Handler {
 >>>>>>> parent of 88bcace... working app, 2nd version with Game Activity
 =======
             if (!SocketHandler.getSocketMap().get(socket).equals(((Game) gameObject).senderUsername)) {
+=======
+            if (!ServerConnectionThread.socketUserMap.get(socket).equals(((Game) gameObject).senderUsername)) {
+>>>>>>> parent of 88bcace... working app, 2nd version with Game Activity
 =======
             if (!ServerConnectionThread.socketUserMap.get(socket).equals(((Game) gameObject).senderUsername)) {
 >>>>>>> parent of 88bcace... working app, 2nd version with Game Activity

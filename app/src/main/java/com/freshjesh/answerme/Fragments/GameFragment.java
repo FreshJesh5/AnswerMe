@@ -31,9 +31,13 @@ public class GameFragment extends Fragment {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     int i;
 =======
 >>>>>>> parent of a146ee2... working app, start working on new game
+=======
+    int i;
+>>>>>>> parent of 88bcace... working app, 2nd version with Game Activity
 =======
     int i;
 >>>>>>> parent of 88bcace... working app, 2nd version with Game Activity
@@ -61,10 +65,14 @@ public class GameFragment extends Fragment {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
         for (i = 0 ; i < myLayoutGrid.length ; i++)
 =======
         for (int i = 0 ; i < myLayoutGrid.length ; i++)
 >>>>>>> parent of a146ee2... working app, start working on new game
+=======
+        for (i = 0 ; i < myLayoutGrid.length ; i++)
+>>>>>>> parent of 88bcace... working app, 2nd version with Game Activity
 =======
         for (i = 0 ; i < myLayoutGrid.length ; i++)
 >>>>>>> parent of 88bcace... working app, 2nd version with Game Activity
