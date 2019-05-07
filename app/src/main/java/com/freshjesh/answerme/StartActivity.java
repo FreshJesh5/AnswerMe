@@ -1,4 +1,4 @@
-package com.freshjesh.answerme.Activities;
+package com.freshjesh.answerme;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -8,7 +8,6 @@ import android.view.View;
 import android.view.WindowManager;
 
 import com.freshjesh.answerme.Fragments.MainFragment;
-import com.freshjesh.answerme.R;
 
 public class StartActivity extends AppCompatActivity {
 

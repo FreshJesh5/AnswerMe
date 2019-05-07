@@ -6,8 +6,8 @@ import android.os.Message;
 import android.util.Log;
 
 
-import com.freshjesh.answerme.Activities.GameActivity;
 import com.freshjesh.answerme.Fragments.ClientFragment;
+import com.freshjesh.answerme.Fragments.GameFragment;
 import com.freshjesh.answerme.Model.Game;
 import com.freshjesh.answerme.Threads.ClientConnectionThread;
 import com.freshjesh.answerme.Threads.ClientSenderThread;
@@ -33,6 +33,7 @@ public class ClientHandler extends Handler {
         }
 
         if (clientObject instanceof Game) {
+<<<<<<< HEAD
             if (GameActivity.getGameObject() != null) {
 //                if (((Game) clientObject).senderUsername.equals(String.valueOf(Constants.NEW_GAME))) {
 //                    ClientSenderThread.isActive = true;
@@ -40,6 +41,15 @@ public class ClientHandler extends Handler {
 //                }
                 GameActivity.setGameObject((Game) clientObject);
                 GameActivity.updateGrid();
+=======
+            if (GameFragment.gameObject != null) {
+                if (((Game) clientObject).senderUsername.equals(String.valueOf(Constants.NEW_GAME))) {
+                    ClientSenderThread.isActive = true;
+//not my gray                    ((Game) clientObject).senderUsername = "";
+                }
+                GameFragment.gameObject = (Game) clientObject;
+                GameFragment.updateGrid();
+>>>>>>> parent of 88bcace... working app, 2nd version with Game Activity
                 Log.d("ClientHandler", "updateGrid");
             } else {
                 ClientFragment.gameObject = (Game) clientObject;
@@ -48,7 +58,7 @@ public class ClientHandler extends Handler {
     }
 
     public static void sendToServer(Object gameObject) {
-        ClientSenderThread sendGameChange = new ClientSenderThread(SocketHandler.getSocket(), gameObject);
+        ClientSenderThread sendGameChange = new ClientSenderThread(ClientConnectionThread.socket, gameObject);
         sendGameChange.start();
     }
 

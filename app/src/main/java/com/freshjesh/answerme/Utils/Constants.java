@@ -16,7 +16,6 @@ public abstract class Constants {
     public static final int DEAL_CARD = 5;
     public static final String ACTION_KEY = "action";
     public static final String DATA_KEY = "data";
-    public static final String MESSAGE_KEY = "message";
 
 //    public static String gameNameString = null;
 

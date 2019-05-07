@@ -7,7 +7,6 @@ import com.freshjesh.answerme.Fragments.HostFragment;
 import com.freshjesh.answerme.Model.Game;
 import com.freshjesh.answerme.Model.Player;
 import com.freshjesh.answerme.Utils.Constants;
-import com.freshjesh.answerme.Utils.SocketHandler;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -38,10 +37,17 @@ public class ServerListenerThread extends Thread {
                 Bundle data = new Bundle();
                 gameObject = objectInputStream.readObject();
                 if (gameObject != null) {
+<<<<<<< HEAD
                     if (gameObject instanceof Player) {
                         data.putSerializable(Constants.DATA_KEY, (Player) gameObject);
 //                        data.putInt(Constants.ACTION_KEY, Constants.PLAYER_LIST_UPDATE);
                         SocketHandler.setSocketMap(hostThreadSocket, ((Player) gameObject).username);
+=======
+                    if (gameObject instanceof PlayerInfo) {
+                        data.putSerializable(Constants.DATA_KEY, (PlayerInfo) gameObject);
+                        data.putInt(Constants.ACTION_KEY, Constants.PLAYER_LIST_UPDATE);
+                        ServerConnectionThread.socketUserMap.put(hostThreadSocket, ((PlayerInfo) gameObject).username);
+>>>>>>> parent of 88bcace... working app, 2nd version with Game Activity
                     } else {
                         data.putSerializable(Constants.DATA_KEY, (Game) gameObject);
                     }

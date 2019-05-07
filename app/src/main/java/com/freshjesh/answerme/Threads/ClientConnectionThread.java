@@ -1,7 +1,11 @@
 package com.freshjesh.answerme.Threads;
 
+<<<<<<< HEAD
 import com.freshjesh.answerme.Model.Player;
 import com.freshjesh.answerme.Utils.SocketHandler;
+=======
+import com.freshjesh.answerme.Model.PlayerInfo;
+>>>>>>> parent of 88bcace... working app, 2nd version with Game Activity
 import com.freshjesh.answerme.Utils.WifiHelper;
 
 import java.io.IOException;
@@ -15,6 +19,7 @@ import java.util.ArrayList;
 
 public class ClientConnectionThread extends Thread {
 
+    public static Socket socket;
     String dstAddress;
     int dstPort = 8080;
     public static boolean serverStarted = false;
@@ -26,19 +31,24 @@ public class ClientConnectionThread extends Thread {
 
     @Override
     public void run() {
-        if (SocketHandler.getSocket() == null) {
+        if (socket == null) {
             try {
                 ArrayList<String> deviceList = WifiHelper.getDeviceList();
                 if (deviceList.size() > 0) {
                     dstAddress = deviceList.get(0);
                     if (dstAddress != null) {
-                        SocketHandler.setSocket(new Socket(dstAddress, dstPort));
-                        if (SocketHandler.getSocket().isConnected()) {
+                        socket = new Socket(dstAddress, dstPort);
+                        if (socket.isConnected()) {
                             serverStarted = true;
-                            ClientListenerThread clientListener = new ClientListenerThread(SocketHandler.getSocket());
+                            ClientListenerThread clientListener = new ClientListenerThread(socket);
                             clientListener.start();
+<<<<<<< HEAD
                             Player player = new Player(userName);
                             ClientSenderThread sendUserName = new ClientSenderThread(SocketHandler.getSocket(), player);
+=======
+                            PlayerInfo playerInfo = new PlayerInfo(userName);
+                            ClientSenderThread sendUserName = new ClientSenderThread(socket, playerInfo);
+>>>>>>> parent of 88bcace... working app, 2nd version with Game Activity
                             sendUserName.start();
                         }
                     }

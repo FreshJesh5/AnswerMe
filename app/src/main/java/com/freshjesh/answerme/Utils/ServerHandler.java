@@ -5,8 +5,7 @@ import android.os.Handler;
 import android.os.Message;
 import android.util.Log;
 
-import com.freshjesh.answerme.Activities.GameActivity;
-
+import com.freshjesh.answerme.Fragments.GameFragment;
 import com.freshjesh.answerme.Fragments.PlayerlistFragment;
 import com.freshjesh.answerme.Model.Game;
 import com.freshjesh.answerme.Model.Player;
@@ -32,9 +31,9 @@ public class ServerHandler extends Handler {
             PlayerlistFragment.mAdapter.notifyItemInserted(PlayerlistFragment.deviceList.size() - 1);
         }
         if (gameObject instanceof Game) {
-            if (GameActivity.getGameObject() != null) {
-                GameActivity.setGameObject((Game) gameObject);
-                GameActivity.updateGrid();
+            if (GameFragment.gameObject != null) {
+                GameFragment.gameObject = (Game) gameObject;
+                GameFragment.updateGrid();
                 Log.d("ServerHandler", "updateGrid");
                 sendToAll(gameObject);
             } else {
@@ -44,14 +43,21 @@ public class ServerHandler extends Handler {
     }
 
     public static void sendToAll(Object gameObject) {
-        Iterator<Socket> socketIterator = SocketHandler.getSocketMap().keySet().iterator();
+        Iterator<Socket> socketIterator = ServerConnectionThread.socketUserMap.keySet().iterator();
         Socket socket;
         while (socketIterator.hasNext()) {
             socket = socketIterator.next();
+<<<<<<< HEAD
 //            if (!SocketHandler.getSocketMap().get(socket).equals(((Game) gameObject).senderUsername)) {
                 ServerSenderThread sendGameUpdate = new ServerSenderThread(socket, gameObject);
                 sendGameUpdate.start();
 //            }
+=======
+            if (!ServerConnectionThread.socketUserMap.get(socket).equals(((Game) gameObject).senderUsername)) {
+                ServerSenderThread sendGameName = new ServerSenderThread(socket, gameObject);
+                sendGameName.start();
+            }
+>>>>>>> parent of 88bcace... working app, 2nd version with Game Activity
             try {
                 Thread.sleep(100);
             } catch (InterruptedException e) {
