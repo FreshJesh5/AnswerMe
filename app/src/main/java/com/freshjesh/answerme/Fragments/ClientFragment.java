@@ -20,6 +20,8 @@ import com.freshjesh.answerme.R;
 import com.freshjesh.answerme.Threads.ClientConnectionThread;
 import com.freshjesh.answerme.Utils.ClientHandler;
 
+import java.net.Socket;
+
 public class ClientFragment extends Fragment {
     public static TextView gameName;
     public static TextView userName;
@@ -58,6 +60,7 @@ public class ClientFragment extends Fragment {
                     activityIntent.putExtra(Constants.MESSAGE_KEY, gameObject);
                     startActivity(activityIntent);
 
+<<<<<<< HEAD
 =======
 >>>>>>> parent of 88bcace... working app, 2nd version with Game Activity
 =======
@@ -73,17 +76,22 @@ public class ClientFragment extends Fragment {
 <<<<<<< HEAD
 <<<<<<< HEAD
 
+=======
+>>>>>>> parent of a146ee2... working app, start working on new game
 //                    GameFragment gameFragment = new GameFragment();
 //                    gameFragment.setParameters(gameObject, ClientConnectionThread.socket);
 //                    fragmentManager.beginTransaction()
 //                            .replace(R.id.container, gameFragment).addToBackStack(GameFragment.class.getName())
 //                            .commit();
+<<<<<<< HEAD
 =======
 >>>>>>> parent of 88bcace... working app, 2nd version with Game Activity
 =======
 >>>>>>> parent of 88bcace... working app, 2nd version with Game Activity
 =======
 >>>>>>> parent of 88bcace... working app, 2nd version with Game Activity
+=======
+>>>>>>> parent of a146ee2... working app, start working on new game
                 } else {
                     Toast.makeText(getActivity(), "Game setup not complete. Please try again", Toast.LENGTH_SHORT).show();
                 }

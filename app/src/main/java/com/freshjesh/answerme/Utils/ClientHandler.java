@@ -40,6 +40,7 @@ public class ClientHandler extends Handler {
 <<<<<<< HEAD
 <<<<<<< HEAD
             if (GameActivity.getGameObject() != null) {
+<<<<<<< HEAD
 =======
             if (GameFragment.gameObject != null) {
 >>>>>>> parent of 88bcace... working app, 2nd version with Game Activity
@@ -49,6 +50,8 @@ public class ClientHandler extends Handler {
 =======
             if (GameFragment.gameObject != null) {
 >>>>>>> parent of 88bcace... working app, 2nd version with Game Activity
+=======
+>>>>>>> parent of a146ee2... working app, start working on new game
                 if (((Game) clientObject).senderUsername.equals(String.valueOf(Constants.NEW_GAME))) {
                     ClientSenderThread.isActive = true;
 //not my gray                    ((Game) clientObject).senderUsername = "";
@@ -56,6 +59,9 @@ public class ClientHandler extends Handler {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> parent of a146ee2... working app, start working on new game
                 GameActivity.setGameObject((Game) clientObject);
                 GameActivity.updateGrid();
 =======

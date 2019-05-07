@@ -33,8 +33,12 @@ public class PlayerlistFragment extends Fragment{
     private static final int SPAN_COUNT = 2;
     public static Game gameObject;
 <<<<<<< HEAD
+<<<<<<< HEAD
     public static ArrayList<Player> deviceList = new ArrayList<>();
     private Player myPlayer = new Player(MainFragment.userName.getText().toString());
+=======
+    public static ArrayList<String> deviceList = new ArrayList();
+>>>>>>> parent of a146ee2... working app, start working on new game
 =======
     public static ArrayList<String> deviceList = new ArrayList();
 >>>>>>> parent of a146ee2... working app, start working on new game
@@ -88,6 +92,7 @@ public class PlayerlistFragment extends Fragment{
                         activityIntent.putExtra(Constants.MESSAGE_KEY, gameObject);
                         startActivity(activityIntent);
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 =======
 >>>>>>> parent of 88bcace... working app, 2nd version with Game Activity
@@ -105,12 +110,15 @@ public class PlayerlistFragment extends Fragment{
 <<<<<<< HEAD
 >>>>>>> parent of 88bcace... working app, 2nd version with Game Activity
 =======
+=======
+>>>>>>> parent of a146ee2... working app, start working on new game
 
 //                        GameFragment gameFragment = new GameFragment();
 //                        gameFragment.setParameters(gameObject, null);
 //                        fragmentManager.beginTransaction()
 //                                .replace(R.id.container, gameFragment).addToBackStack(GameFragment.class.getName())
 //                                .commit();
+<<<<<<< HEAD
 >>>>>>> parent of a146ee2... working app, start working on new game
 =======
 >>>>>>> parent of 88bcace... working app, 2nd version with Game Activity
@@ -118,6 +126,8 @@ public class PlayerlistFragment extends Fragment{
 >>>>>>> parent of 88bcace... working app, 2nd version with Game Activity
 =======
 >>>>>>> parent of 88bcace... working app, 2nd version with Game Activity
+=======
+>>>>>>> parent of a146ee2... working app, start working on new game
                     } catch (IllegalArgumentException exception) {
                         Toast.makeText(getActivity(), exception.getMessage(), Toast.LENGTH_SHORT).show();
                     }

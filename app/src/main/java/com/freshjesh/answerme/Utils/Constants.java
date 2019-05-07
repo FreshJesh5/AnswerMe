@@ -16,6 +16,10 @@ public abstract class Constants {
     public static final int DEAL_CARD = 5;
     public static final String ACTION_KEY = "action";
     public static final String DATA_KEY = "data";
+<<<<<<< HEAD
+=======
+    public static final String MESSAGE_KEY = "message";
+>>>>>>> parent of a146ee2... working app, start working on new game
 
     public static boolean isPlayerActive(String userName, Game gameObject) {
         for (int i = 0; i < gameObject.getPlayers().size(); i++) {

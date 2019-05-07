@@ -2,14 +2,9 @@ package com.freshjesh.answerme.Fragments;
 
 import android.graphics.Color;
 import android.os.Bundle;
-<<<<<<< HEAD:app/src/main/java/com/freshjesh/answerme/Fragments/GameFragment.java
 import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
-=======
-import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
->>>>>>> parent of a146ee2... working app, start working on new game:app/src/main/java/com/freshjesh/answerme/Activities/GameActivity.java
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -20,9 +15,6 @@ import com.freshjesh.answerme.Threads.ClientConnectionThread;
 import com.freshjesh.answerme.Utils.ClientHandler;
 import com.freshjesh.answerme.Utils.Constants;
 import com.freshjesh.answerme.Utils.ServerHandler;
-import com.freshjesh.answerme.Utils.SocketHandler;
-
-import java.net.Socket;
 
 import java.net.Socket;
 
@@ -36,46 +28,15 @@ public class GameFragment extends Fragment {
     public static Game gameObject;
     public static Socket socket;
     public static Button[] myLayoutGrid = new Button[9];
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-    int i;
-=======
->>>>>>> parent of a146ee2... working app, start working on new game
-=======
-    int i;
->>>>>>> parent of 88bcace... working app, 2nd version with Game Activity
-=======
-    int i;
->>>>>>> parent of 88bcace... working app, 2nd version with Game Activity
-=======
-    int i;
->>>>>>> parent of 88bcace... working app, 2nd version with Game Activity
 
     public GameFragment() {
 
-<<<<<<< HEAD:app/src/main/java/com/freshjesh/answerme/Fragments/GameFragment.java
     }
-=======
-    private static Game gameObject;
-    private Socket socket;
-    private static Button[] myLayoutGrid = new Button[9];
->>>>>>> parent of a146ee2... working app, start working on new game:app/src/main/java/com/freshjesh/answerme/Activities/GameActivity.java
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-<<<<<<< HEAD:app/src/main/java/com/freshjesh/answerme/Fragments/GameFragment.java
     }
-=======
-        setContentView(R.layout.main_game_layout);
-
-        Intent intent = getIntent();
-        gameObject = (Game)intent.getSerializableExtra(Constants.MESSAGE_KEY);
-        socket = SocketHandler.getSocket();
-
->>>>>>> parent of a146ee2... working app, start working on new game:app/src/main/java/com/freshjesh/answerme/Activities/GameActivity.java
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -85,23 +46,7 @@ public class GameFragment extends Fragment {
                 R.id.btn4, R.id.btn5, R.id.btn6,
                 R.id.btn7, R.id.btn8, R.id.btn9};
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-        for (i = 0 ; i < myLayoutGrid.length ; i++)
-=======
         for (int i = 0 ; i < myLayoutGrid.length ; i++)
->>>>>>> parent of a146ee2... working app, start working on new game
-=======
-        for (i = 0 ; i < myLayoutGrid.length ; i++)
->>>>>>> parent of 88bcace... working app, 2nd version with Game Activity
-=======
-        for (i = 0 ; i < myLayoutGrid.length ; i++)
->>>>>>> parent of 88bcace... working app, 2nd version with Game Activity
-=======
-        for (i = 0 ; i < myLayoutGrid.length ; i++)
->>>>>>> parent of 88bcace... working app, 2nd version with Game Activity
         {
             myLayoutGrid[i] = (Button) rootView.findViewById(ids[i]);
             myLayoutGrid[i].setBackgroundColor(Color.BLUE);

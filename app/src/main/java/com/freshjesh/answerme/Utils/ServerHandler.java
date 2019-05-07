@@ -13,6 +13,9 @@ import com.freshjesh.answerme.Model.Player;
 =======
 import com.freshjesh.answerme.Model.PlayerInfo;
 import com.freshjesh.answerme.Threads.ServerConnectionThread;
+<<<<<<< HEAD
+>>>>>>> parent of a146ee2... working app, start working on new game
+=======
 >>>>>>> parent of a146ee2... working app, start working on new game
 import com.freshjesh.answerme.Threads.ServerSenderThread;
 
@@ -58,6 +61,7 @@ public class ServerHandler extends Handler {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 //            if (!SocketHandler.getSocketMap().get(socket).equals(((Game) gameObject).senderUsername)) {
                 ServerSenderThread sendGameUpdate = new ServerSenderThread(socket, gameObject);
                 sendGameUpdate.start();
@@ -79,6 +83,12 @@ public class ServerHandler extends Handler {
 =======
             if (!ServerConnectionThread.socketUserMap.get(socket).equals(((Game) gameObject).senderUsername)) {
 >>>>>>> parent of 88bcace... working app, 2nd version with Game Activity
+                ServerSenderThread sendGameName = new ServerSenderThread(socket, gameObject);
+                sendGameName.start();
+            }
+>>>>>>> parent of a146ee2... working app, start working on new game
+=======
+            if (!SocketHandler.getSocketMap().get(socket).equals(((Game) gameObject).senderUsername)) {
                 ServerSenderThread sendGameName = new ServerSenderThread(socket, gameObject);
                 sendGameName.start();
             }
