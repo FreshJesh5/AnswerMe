@@ -51,11 +51,14 @@ public class ClientFragment extends Fragment {
             public void onClick(View view) {
                 if (gameObject != null) {
 <<<<<<< HEAD
+<<<<<<< HEAD
 
                     Intent activityIntent = new Intent(getActivity(), GameActivity.class);
                     activityIntent.putExtra(Constants.MESSAGE_KEY, gameObject);
                     startActivity(activityIntent);
 
+=======
+>>>>>>> parent of 88bcace... working app, 2nd version with Game Activity
 =======
 >>>>>>> parent of 88bcace... working app, 2nd version with Game Activity
                     GameFragment gameFragment = new GameFragment();
@@ -64,12 +67,15 @@ public class ClientFragment extends Fragment {
                             .replace(R.id.container, gameFragment).addToBackStack(GameFragment.class.getName())
                             .commit();
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 //                    GameFragment gameFragment = new GameFragment();
 //                    gameFragment.setParameters(gameObject, ClientConnectionThread.socket);
 //                    fragmentManager.beginTransaction()
 //                            .replace(R.id.container, gameFragment).addToBackStack(GameFragment.class.getName())
 //                            .commit();
+=======
+>>>>>>> parent of 88bcace... working app, 2nd version with Game Activity
 =======
 >>>>>>> parent of 88bcace... working app, 2nd version with Game Activity
                 } else {
