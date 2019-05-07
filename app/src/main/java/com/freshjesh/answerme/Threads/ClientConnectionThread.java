@@ -1,11 +1,8 @@
 package com.freshjesh.answerme.Threads;
 
-<<<<<<< HEAD
 import com.freshjesh.answerme.Model.Player;
 import com.freshjesh.answerme.Utils.SocketHandler;
-=======
 import com.freshjesh.answerme.Model.PlayerInfo;
->>>>>>> parent of 88bcace... working app, 2nd version with Game Activity
 import com.freshjesh.answerme.Utils.WifiHelper;
 
 import java.io.IOException;
@@ -42,13 +39,10 @@ public class ClientConnectionThread extends Thread {
                             serverStarted = true;
                             ClientListenerThread clientListener = new ClientListenerThread(socket);
                             clientListener.start();
-<<<<<<< HEAD
                             Player player = new Player(userName);
                             ClientSenderThread sendUserName = new ClientSenderThread(SocketHandler.getSocket(), player);
-=======
                             PlayerInfo playerInfo = new PlayerInfo(userName);
                             ClientSenderThread sendUserName = new ClientSenderThread(socket, playerInfo);
->>>>>>> parent of 88bcace... working app, 2nd version with Game Activity
                             sendUserName.start();
                         }
                     }
