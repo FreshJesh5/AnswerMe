@@ -15,14 +15,10 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.freshjesh.answerme.Activities.GameActivity;
 import com.freshjesh.answerme.Model.Game;
 import com.freshjesh.answerme.R;
 import com.freshjesh.answerme.Threads.ClientConnectionThread;
 import com.freshjesh.answerme.Utils.ClientHandler;
-import com.freshjesh.answerme.Utils.Constants;
-
-import java.net.Socket;
 
 public class ClientFragment extends Fragment {
     public static TextView gameName;
@@ -54,22 +50,28 @@ public class ClientFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 if (gameObject != null) {
+<<<<<<< HEAD
 
                     Intent activityIntent = new Intent(getActivity(), GameActivity.class);
                     activityIntent.putExtra(Constants.MESSAGE_KEY, gameObject);
                     startActivity(activityIntent);
 
+=======
+>>>>>>> parent of 88bcace... working app, 2nd version with Game Activity
                     GameFragment gameFragment = new GameFragment();
                     gameFragment.setParameters(gameObject, ClientConnectionThread.socket);
                     fragmentManager.beginTransaction()
                             .replace(R.id.container, gameFragment).addToBackStack(GameFragment.class.getName())
                             .commit();
+<<<<<<< HEAD
 
 //                    GameFragment gameFragment = new GameFragment();
 //                    gameFragment.setParameters(gameObject, ClientConnectionThread.socket);
 //                    fragmentManager.beginTransaction()
 //                            .replace(R.id.container, gameFragment).addToBackStack(GameFragment.class.getName())
 //                            .commit();
+=======
+>>>>>>> parent of 88bcace... working app, 2nd version with Game Activity
                 } else {
                     Toast.makeText(getActivity(), "Game setup not complete. Please try again", Toast.LENGTH_SHORT).show();
                 }

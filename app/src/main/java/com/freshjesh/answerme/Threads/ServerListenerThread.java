@@ -47,6 +47,9 @@ public class ServerListenerThread extends Thread {
                         data.putSerializable(Constants.DATA_KEY, (PlayerInfo) gameObject);
                         data.putInt(Constants.ACTION_KEY, Constants.PLAYER_LIST_UPDATE);
                         ServerConnectionThread.socketUserMap.put(hostThreadSocket, ((PlayerInfo) gameObject).username);
+<<<<<<< HEAD
+>>>>>>> parent of 88bcace... working app, 2nd version with Game Activity
+=======
 >>>>>>> parent of 88bcace... working app, 2nd version with Game Activity
                     } else {
                         data.putSerializable(Constants.DATA_KEY, (Game) gameObject);

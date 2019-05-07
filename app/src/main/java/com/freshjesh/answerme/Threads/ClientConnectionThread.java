@@ -1,7 +1,10 @@
 package com.freshjesh.answerme.Threads;
 
+<<<<<<< HEAD
 import com.freshjesh.answerme.Model.Player;
 import com.freshjesh.answerme.Utils.SocketHandler;
+=======
+>>>>>>> parent of 88bcace... working app, 2nd version with Game Activity
 import com.freshjesh.answerme.Model.PlayerInfo;
 import com.freshjesh.answerme.Utils.WifiHelper;
 

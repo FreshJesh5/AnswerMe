@@ -81,16 +81,20 @@ public class PlayerlistFragment extends Fragment{
                     try {
                         initializeGame();
 <<<<<<< HEAD
+<<<<<<< HEAD
                         Intent activityIntent = new Intent(getActivity(), GameActivity.class);
                         activityIntent.putExtra(Constants.MESSAGE_KEY, gameObject);
                         startActivity(activityIntent);
 <<<<<<< HEAD
 =======
+=======
+>>>>>>> parent of 88bcace... working app, 2nd version with Game Activity
                         GameFragment gameFragment = new GameFragment();
                         gameFragment.setParameters(gameObject, null);
                         fragmentManager.beginTransaction()
                                 .replace(R.id.container, gameFragment).addToBackStack(GameFragment.class.getName())
                                 .commit();
+<<<<<<< HEAD
 >>>>>>> parent of 88bcace... working app, 2nd version with Game Activity
 =======
 
@@ -100,6 +104,8 @@ public class PlayerlistFragment extends Fragment{
 //                                .replace(R.id.container, gameFragment).addToBackStack(GameFragment.class.getName())
 //                                .commit();
 >>>>>>> parent of a146ee2... working app, start working on new game
+=======
+>>>>>>> parent of 88bcace... working app, 2nd version with Game Activity
                     } catch (IllegalArgumentException exception) {
                         Toast.makeText(getActivity(), exception.getMessage(), Toast.LENGTH_SHORT).show();
                     }
