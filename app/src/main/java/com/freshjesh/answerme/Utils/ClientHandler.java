@@ -24,21 +24,23 @@ public class ClientHandler extends Handler {
     public void handleMessage(Message msg) {
         super.handleMessage(msg);
         messageData = msg.getData();
-//        int value = messageData.getInt(Constants.ACTION_KEY);
+        int value = messageData.getInt(Constants.ACTION_KEY);
         Object clientObject = messageData.getSerializable(Constants.DATA_KEY);
-        if (clientObject instanceof String) {
+        if (value == Constants.UPDATE_GAME_NAME) {
             String gameName = (String) clientObject;
-            ClientFragment.gameName.setText(gameName);
-            Log.d("ClientHandler", "gameNameString set");
+            if (ClientFragment.gameName != null)
+            {
+                ClientFragment.gameName.setText(gameName);
+            }
         }
 
         if (clientObject instanceof Game) {
 <<<<<<< HEAD
             if (GameActivity.getGameObject() != null) {
-//                if (((Game) clientObject).senderUsername.equals(String.valueOf(Constants.NEW_GAME))) {
-//                    ClientSenderThread.isActive = true;
-////not my gray                    ((Game) clientObject).senderUsername = "";
-//                }
+                if (((Game) clientObject).senderUsername.equals(String.valueOf(Constants.NEW_GAME))) {
+                    ClientSenderThread.isActive = true;
+//not my gray                    ((Game) clientObject).senderUsername = "";
+                }
                 GameActivity.setGameObject((Game) clientObject);
                 GameActivity.updateGrid();
 =======
@@ -51,6 +53,9 @@ public class ClientHandler extends Handler {
                 GameFragment.updateGrid();
 >>>>>>> parent of 88bcace... working app, 2nd version with Game Activity
                 Log.d("ClientHandler", "updateGrid");
+//                GameFragment.updatePlayerStatus();
+//                GameFragment.updateTable();
+//                GameFragment.updateHand();
             } else {
                 ClientFragment.gameObject = (Game) clientObject;
             }

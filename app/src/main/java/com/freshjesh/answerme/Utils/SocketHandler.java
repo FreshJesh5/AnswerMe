@@ -10,7 +10,7 @@ import java.util.HashMap;
 public class SocketHandler {
 
     private static Socket socket = null;
-    private static HashMap<Socket, String> socketUserMap = new HashMap<>();
+    private static HashMap<Socket, String> socketUserMap = new HashMap();
 
     public static void setSocket(Socket socket){
         SocketHandler.socket=socket;

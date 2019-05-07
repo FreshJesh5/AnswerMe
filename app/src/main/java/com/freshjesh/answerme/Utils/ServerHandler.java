@@ -8,7 +8,12 @@ import android.util.Log;
 import com.freshjesh.answerme.Fragments.GameFragment;
 import com.freshjesh.answerme.Fragments.PlayerlistFragment;
 import com.freshjesh.answerme.Model.Game;
+<<<<<<< HEAD
 import com.freshjesh.answerme.Model.Player;
+=======
+import com.freshjesh.answerme.Model.PlayerInfo;
+import com.freshjesh.answerme.Threads.ServerConnectionThread;
+>>>>>>> parent of a146ee2... working app, start working on new game
 import com.freshjesh.answerme.Threads.ServerSenderThread;
 
 import java.net.Socket;
@@ -35,6 +40,7 @@ public class ServerHandler extends Handler {
                 GameFragment.gameObject = (Game) gameObject;
                 GameFragment.updateGrid();
                 Log.d("ServerHandler", "updateGrid");
+//                GameFragment.updatePlayerStatus();
                 sendToAll(gameObject);
             } else {
                 PlayerlistFragment.gameObject = (Game) gameObject;
@@ -48,6 +54,7 @@ public class ServerHandler extends Handler {
         while (socketIterator.hasNext()) {
             socket = socketIterator.next();
 <<<<<<< HEAD
+<<<<<<< HEAD
 //            if (!SocketHandler.getSocketMap().get(socket).equals(((Game) gameObject).senderUsername)) {
                 ServerSenderThread sendGameUpdate = new ServerSenderThread(socket, gameObject);
                 sendGameUpdate.start();
@@ -58,6 +65,12 @@ public class ServerHandler extends Handler {
                 sendGameName.start();
             }
 >>>>>>> parent of 88bcace... working app, 2nd version with Game Activity
+=======
+            if (!SocketHandler.getSocketMap().get(socket).equals(((Game) gameObject).senderUsername)) {
+                ServerSenderThread sendGameName = new ServerSenderThread(socket, gameObject);
+                sendGameName.start();
+            }
+>>>>>>> parent of a146ee2... working app, start working on new game
             try {
                 Thread.sleep(100);
             } catch (InterruptedException e) {

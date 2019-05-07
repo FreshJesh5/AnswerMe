@@ -17,8 +17,6 @@ public abstract class Constants {
     public static final String ACTION_KEY = "action";
     public static final String DATA_KEY = "data";
 
-//    public static String gameNameString = null;
-
     public static boolean isPlayerActive(String userName, Game gameObject) {
         for (int i = 0; i < gameObject.getPlayers().size(); i++) {
             Player play = gameObject.getPlayers().get(i);

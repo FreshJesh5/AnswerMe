@@ -28,7 +28,10 @@ public class GameFragment extends Fragment {
     public static Game gameObject;
     public static Socket socket;
     public static Button[] myLayoutGrid = new Button[9];
+<<<<<<< HEAD
     int i;
+=======
+>>>>>>> parent of a146ee2... working app, start working on new game
 
     public GameFragment() {
 
@@ -47,7 +50,11 @@ public class GameFragment extends Fragment {
                 R.id.btn4, R.id.btn5, R.id.btn6,
                 R.id.btn7, R.id.btn8, R.id.btn9};
 
+<<<<<<< HEAD
         for (i = 0 ; i < myLayoutGrid.length ; i++)
+=======
+        for (int i = 0 ; i < myLayoutGrid.length ; i++)
+>>>>>>> parent of a146ee2... working app, start working on new game
         {
             myLayoutGrid[i] = (Button) rootView.findViewById(ids[i]);
             myLayoutGrid[i].setBackgroundColor(Color.BLUE);

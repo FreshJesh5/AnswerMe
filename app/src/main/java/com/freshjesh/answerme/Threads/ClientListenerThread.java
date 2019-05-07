@@ -35,10 +35,11 @@ public class ClientListenerThread extends Thread {
                 inputStream = socket.getInputStream();
                 objectInputStream = new ObjectInputStream(inputStream);
                 Bundle data = new Bundle();
-                Object serverObject = objectInputStream.readObject();
+                Object serverObject = (Object) objectInputStream.readObject();
                 if (serverObject != null) {
                     if (serverObject instanceof String) {
                         data.putSerializable(Constants.DATA_KEY, (String) serverObject);
+                        data.putInt(Constants.ACTION_KEY, Constants.UPDATE_GAME_NAME);
                     }
                     if (serverObject instanceof Game) {
                         data.putSerializable(Constants.DATA_KEY, (Game) serverObject);

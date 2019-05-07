@@ -58,16 +58,14 @@
                 android:layout_width="300dp"
                 android:layout_height="wrap_content"
                 android:hint="Game Name"
-                android:imeOptions="actionNext"
-                android:inputType="text"
-                android:lines="1"
-                android:maxLength="30"
-                android:layout_gravity="start"
-                android:textAlignment="viewStart"
-                app:met_baseColor="#ffffff"
                 app:met_iconLeft="@drawable/game_icon"
                 app:met_iconPadding="0dp"
-                app:met_primaryColor="@color/editTextSelect" />
+                android:inputType="text"
+                android:maxLength="30"
+                android:imeOptions="actionNext"
+                app:met_primaryColor="@color/editTextSelect"
+                app:met_baseColor="#ffffff"
+                android:lines="1" />
         </LinearLayout>
 
 
@@ -83,14 +81,13 @@
                 android:layout_width="300dp"
                 android:layout_height="wrap_content"
                 android:hint="Number of Players"
-                android:inputType="number"
                 android:maxLength="1"
-                android:layout_gravity="start"
-                android:textAlignment="viewStart"
                 app:met_baseColor="#ffffff"
+                android:gravity="center"
+                app:met_primaryColor="@color/editTextSelect"
+                android:inputType="number"
                 app:met_iconLeft="@drawable/players_icon"
-                app:met_iconPadding="0dp"
-                app:met_primaryColor="@color/editTextSelect" />
+                app:met_iconPadding="0dp" />
         </LinearLayout>
 
     </LinearLayout>

@@ -17,7 +17,7 @@ public class ClientSenderThread extends Thread {
 
     private Socket hostThreadSocket;
     Object message;
-//    public static boolean isActive = true;
+    public static boolean isActive = true;
 
     public ClientSenderThread(Socket socket, Object message) {
         hostThreadSocket = socket;
@@ -30,15 +30,15 @@ public class ClientSenderThread extends Thread {
         ObjectOutputStream objectOutputStream;
         if (hostThreadSocket.isConnected()) {
             try {
-//                if (isActive) {
-//                    if (message instanceof Game &&
-//                            !Constants.isPlayerActive(MainFragment.userName.getText().toString(), (Game) message)) {
-//                        isActive = false;
-//                    }
+                if (isActive) {
+                    if (message instanceof Game &&
+                            !Constants.isPlayerActive(MainFragment.userName.getText().toString(), (Game) message)) {
+                        isActive = false;
+                    }
                     outputStream = hostThreadSocket.getOutputStream();
                     objectOutputStream = new ObjectOutputStream(outputStream);
                     objectOutputStream.writeObject(message);
-//                }
+                }
             } catch (IOException e) {
                 e.printStackTrace();
             }
